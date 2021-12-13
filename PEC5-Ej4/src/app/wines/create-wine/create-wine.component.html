@@ -1,0 +1,31 @@
+<h3>Create Wine</h3>
+
+<form [formGroup]="wineForm" (ngSubmit)="onSubmit()">
+    <div>
+        <input  type="text" formControlName="wineName" placeholder="Wine Name" required>
+        <div class="required" *ngIf ="wineForm.controls['wineName'].invalid && (wineForm.controls['wineName'].dirty || wineForm.controls['wineName'].touched)"
+        >Wine name is required</div>
+    </div>
+    <br>
+    <div>
+        <input type="number" formControlName="winePrice" placeholder="Wine Price"required>
+        <div class="required" *ngIf ="wineForm.controls['winePrice'].invalid && (wineForm.controls['winePrice'].touched)">Wine price is required</div>
+    </div>
+    <br>
+    <div>
+        <input type="text" formControlName="wineUrl" placeholder="Wine Image Url">
+        <div class="required" *ngIf ="wineForm.controls['wineUrl'].touched">
+            Wine Image Url is required
+
+            <p class="required" *ngIf="this.wineForm.get('wineUrl')?.errors?.['pattern']">
+                Wine Image Url does not seem to be a valid Url 
+            </p>
+
+        </div>
+    </div>
+    <br>
+    <input type="checkbox">On Sale
+    <br>
+    <button type="submit" [disabled]="!wineForm.valid">Create</button>
+</form>
+
