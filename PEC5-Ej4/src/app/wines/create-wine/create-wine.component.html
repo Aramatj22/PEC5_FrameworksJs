@@ -15,7 +15,7 @@
     <div>
         <input type="number" formControlName="winePrice" placeholder="Wine Price"required>
         <div class="required" *ngIf ="wineForm.controls['winePrice'].invalid && (wineForm.controls['winePrice'].touched)">Wine price is required</div>
-        <div class="required" *ngIf ="this.wineForm.get('winePrice')?.errors?.['min']">Wine price is invalid</div>
+        <div class="required" *ngIf ="this.wineForm.get('winePricer')?.errors?.['min']">Wine price is invalid</div>
     </div>
     <br>
     <div>
