@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Wine } from "../../models/wine";
+import { validName } from './validatorName';
 
 @Component({
   selector: 'app-create-wine',
@@ -13,9 +14,9 @@ export class CreateWineComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
    wineForm = this.fb.group({
-    wineName: ['', [Validators.required]],
-    winePrice: ['', Validators.min(0)],
-    wineUrl: ['', Validators.pattern("(http(s?):)|([/|.|\w|\s])*\.(?:jpg|gif|png)")]
+    wineName: ['', [Validators.required, validName()]],
+    winePrice: ['', [Validators.required,Validators.min(1)]],
+    wineUrl: ['', [Validators.required, Validators.pattern("(http(s?):)|([/|.|\w|\s])*\.(?:jpg|gif|png)")]]
   });
 
 
